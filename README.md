@@ -1,84 +1,56 @@
-# 🦺 PPE Safety Monitoring System
+# 🛡️ PPE Safety Monitoring System & Digital Twin Platform
 
-A real-time computer vision-based workplace safety monitoring system designed to detect Personal Protective Equipment (PPE) compliance along with fire and smoke hazards.
-
-The system uses YOLO-based object detection to monitor workers through a live webcam or recorded video and identify safety-related conditions such as helmets, safety vests, boots, fire, and smoke.
+An end-to-end, real-time Computer Vision & AI-driven Personal Protective Equipment (PPE) Compliance, Hazard Detection (Fire & Smoke), and 3D Spatial Digital Twin Platform for industrial safety.
 
 ---
 
 ## 📌 Overview
 
-Workplace safety is especially important in environments such as construction sites, factories, warehouses, mines, and industrial facilities.
-
-Traditional safety monitoring mainly depends on manual supervision, which can be difficult to maintain continuously.
-
-This project aims to provide an automated monitoring system that can analyze video footage and identify potential safety violations or hazards in real time.
-
-### The system monitors:
-
-- 👷 Worker / Person
-- ⛑️ Helmet
-- ❌ No Helmet
-- 🦺 Safety Vest
-- ❌ No Vest
-- 🥾 Boots
-- ❌ No Boots
-- 🔥 Fire
-- 💨 Smoke
-
-The detection results are displayed directly on the video feed using bounding boxes, labels, and safety status indicators.
+Workplace safety is critical in high-risk environments such as construction sites, manufacturing plants, chemical zones, and heavy industrial facilities. This platform combines:
+1. **YOLO-based Computer Vision Core**: Real-time multi-class object detection (Worker, Hardhat, High-Vis Vest, Safety Boots, Gloves, Goggles, Fire & Smoke).
+2. **Interactive 3D Digital Twin & Frontend Dashboard**: High-fidelity React 19 + Three.js application for spatial zone visualization, live CCTV grid simulation, gate access attendance, incident investigation forensics, asset inventory tracking, and predictive analytics.
 
 ---
 
-# ✨ Key Features
+## 🚀 Key Modules & Features
 
-### 👷 Worker Detection
-Detects workers/persons present in the monitored area.
+### 1. 🔴 Live Multi-Camera Monitoring (`LiveMonitoringPage`)
+- Real-time CCTV streams with AI bounding boxes for PPE compliance.
+- Interactive HUD showing live confidence scores, automated alarm alerts, snapshot forensics, and emergency broadcast dispatch.
+- Simulation controls: dynamic violation injectors, zone toggling, and incident alert simulations.
 
-### ⛑️ Helmet Detection
-Identifies whether workers are wearing safety helmets.
+### 2. 🌐 3D Spatial Digital Twin (`SpatialZonesPage`)
+- Three.js / React Three Fiber interactive 3D factory visualization.
+- Orbit camera controls, zone-level hazard highlights (Heavy Fab, Chemical Bay, High Voltage, Furnace Hall), real-time worker spatial pings, and floor plan heatmaps.
 
-### 🦺 Safety Vest Detection
-Detects safety vests and evaluates whether workers are wearing them.
+### 3. 🚧 Gate Access & Attendance Control (`GateAccessAttendancePage`)
+- Automated turnstile biometric + PPE scan verification before access authorization.
+- Real-time pass/fail denial logs, RFID verification, and manual barrier override management.
 
-### 🥾 Boots Detection
-Detects safety boots and evaluates the lower-body region of workers.
+### 4. 👥 Workforce Safety Directory (`WorkforceDirectoryPage`)
+- Detailed personnel directories with safety scoring, violation history, active certifications, and emergency contact registry.
 
-### 🔥 Fire Detection
-Detects visible fire hazards in the monitored environment.
+### 5. 📦 Smart PPE Asset Vault (`PpeAssetVaultPage`)
+- IoT/RFID-tracked safety equipment inventory (helmets, harnesses, respirators).
+- Expiration tracking, calibration alerts, battery levels, and maintenance audit logs.
 
-### 💨 Smoke Detection
-Detects smoke and generates a warning.
+### 6. 🔍 Incident Investigation Hub (`IncidentInvestigationPage`)
+- Detailed forensic logs with captured visual evidence, AI confidence breakdowns, supervisor sign-offs, and OSHA-compliant report generation.
 
-### 🚨 Safety Status
-The system provides an overall safety status:
+### 7. 📈 Predictive Safety Analytics (`PredictiveAnalyticsPage`)
+- Time-series compliance forecasting, peak violation hour analysis, and cross-shift safety performance rankings.
 
-- 🟢 **SAFE** – No major hazard detected
-- 🟡 **WARNING** – Smoke or safety violations detected
-- 🔴 **DANGER** – Fire detected
-
-### 📹 Multiple Input Modes
-
-The system supports:
-
-- Live webcam
-- Recorded video files
-
-### 🎨 Visual Detection
-Different objects are represented using different colored bounding boxes and labels, making the system easier to understand during monitoring.
-
-### ⚡ Real-Time Monitoring
-The system continuously processes incoming video frames and updates the detected safety conditions.
+### 8. ⚙️ Neural Vision Settings (`NeuralSettingsPage`)
+- Configurable inference thresholds, RTSP camera mappings, and alert webhook integrations.
 
 ---
 
-# 🧠 System Architecture
+## 🧠 AI Detection & System Architecture
 
 ```text
                 ┌──────────────────────┐
                 │      Video Input     │
-                │                      │
-                │  Webcam / MP4 Video  │
+                │  Webcam / CCTV / MP4 │
                 └──────────┬───────────┘
                            │
                            ▼
@@ -96,20 +68,75 @@ The system continuously processes incoming video frames and updates the detected
    └────────┬─────────┘       └────────┬─────────┘
             │                          │
             ▼                          ▼
-   Person / Helmet /             Fire / Smoke
-   Vest / Boots                  Detection
+   Worker / Helmet /              Fire / Smoke
+   Vest / Boots / Gloves          Detection
             │                          │
             └─────────────┬────────────┘
                           │
                           ▼
                 ┌──────────────────────┐
                 │ Safety Status Engine │
+                │ (SAFE/WARNING/DANGER)│
                 └──────────┬───────────┘
                            │
                            ▼
                 ┌──────────────────────┐
-                │ Monitoring Dashboard │
-                │                      │
-                │ SAFE / WARNING /     │
-                │ DANGER               │
+                │ SmartPPE Dashboard & │
+                │ 3D Spatial Twin      │
                 └──────────────────────┘
+```
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend & Digital Twin
+- **Framework**: [React 19](https://react.dev/) + [Vite](https://vitejs.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- **3D Engine**: [Three.js](https://threejs.org/) + [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber) + [@react-three/drei](https://github.com/pmndrs/drei)
+- **Icons & UI**: [Lucide React](https://lucide.dev/) + Custom Dark Glassmorphism CSS Architecture
+- **Linter**: [Oxlint](https://oxc.rs/)
+
+### Vision & ML Backend (Python)
+- **Object Detection**: Ultralytics YOLOv8 / YOLOv11
+- **Computer Vision**: OpenCV
+- **Tracking & Geometry**: ByteTrack / Custom Spatial ROI Matching
+
+---
+
+## 🏃 Getting Started
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/arpitdevgoswami/PPE-Safety-Monitoring-System.git
+cd PPE-Safety-Monitoring-System
+```
+
+### 2. Frontend Dashboard Setup
+```bash
+# Install dependencies
+npm install
+
+# Start local Vite development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+### 3. Python ML / Vision Pipeline (Optional)
+```bash
+# Create and activate virtual environment
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install requirements
+pip install ultralytics opencv-python numpy
+
+# Run detection
+python main.py
+```
+
+---
+
+## 📄 License
+This project is licensed under the MIT License.

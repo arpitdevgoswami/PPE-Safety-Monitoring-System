@@ -1,34 +1,72 @@
-﻿# Python
+# Frontend Dependencies & Build Outputs
+node_modules/
+.pnp
+.pnp.js
+dist/
+dist-ssr/
+build/
+*.local
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+*.pem
+
+# Python & Backend Environments
+backend/
+.venv/
+venv/
+env/
 __pycache__/
 *.py[cod]
 *.pyo
+*$py.class
 
-# IDE
-.vscode/
-
-# Cache
+# Cache & Temporary files
 .cache/
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Datasets
+# Datasets & Training artifacts
 FINAL_PPE_DATASET/
 construction-ppe/
 PPE_Dataset/
 PPE_Tiny/
 PPE_Tiny_3Class/
 PPE_Tiny_Test_sub/
+runs/
 
-# Models
+# ML Model Weights (large binaries)
 *.pt
 *.onnx
 
-# Videos
+# Large Media / Test Recordings & Archives
 *.mp4
 *.avi
 *.mov
 *.mkv
-
-# Archives
 *.zip
+*.tar.gz
 
-# YOLO training outputs
-runs/
+# Editor & OS files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Gemini / IDE Agent artifacts
+.gemini/
+.agents/
+.system_generated/
